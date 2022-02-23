@@ -1,26 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+
+import { reducers } from './reducers';
 import App from './App';
-import { BrowserRouter as Router } from "react-router-dom";
+import './index.css';
 
-import { render } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-
-const rootElement = document.getElementById("root");
-
-render(
-  <BrowserRouter>
-      <Routes>
-          <Route path="" element={<Login />} />
-          {/* <Route path="dashboard" element={<Dashboard />} />
-          <Route path="register" element={<App />} /> */}
-      </Routes>
-  </BrowserRouter>,
-rootElement
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
 );
