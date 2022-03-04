@@ -3,9 +3,6 @@ import { Outlet, Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { createUser } from "../actions/posts";
 
-
-
-
 import '../styling/Login.css';
 
 export default class Login extends Component{
