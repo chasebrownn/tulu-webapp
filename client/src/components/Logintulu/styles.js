@@ -8,6 +8,8 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     padding: theme.spacing(2),
     backgroundColor: '#084C5E',
+    borderRadius: 25,
+    whiteSpace: 'pre-wrap',
   },
   root: {
     '& .MuiTextField-root': {
