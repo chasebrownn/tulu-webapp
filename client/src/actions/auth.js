@@ -7,7 +7,7 @@ export const signin = (formData, router) => async (dispatch) => {
 
     dispatch({ type: AUTH, data });
 
-    router.push('/');
+    router.push('/home');
   } catch (error) {
     console.log(error);
   }
@@ -19,7 +19,19 @@ export const signup = (formData, router) => async (dispatch) => {
 
     dispatch({ type: AUTH, data });
 
-    router.push('/');
+    router.push('/age');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const ageSelected = (formData, router) => async (dispatch) => {
+  try {
+    // const { data } = await api.signUp(formData);
+
+    // dispatch({ type: AUTH, data });
+
+    router.push('/dashboard');
   } catch (error) {
     console.log(error);
   }
