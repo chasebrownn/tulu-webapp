@@ -1,9 +1,10 @@
 import React from 'react'
+import logo from '../../images/logo.png';
 
 const Tulu = () => {
   return (
     <div>
-        <h1>Tulu</h1>
+      <img src={logo}></img>
         <p>Travel unlimited <br/>Live unlimited</p>
     </div>
   )

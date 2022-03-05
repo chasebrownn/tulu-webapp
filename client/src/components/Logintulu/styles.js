@@ -16,6 +16,10 @@ export default makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  title : {
+    color: '#FFFFFF'
+
+  },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
