@@ -18,9 +18,9 @@ const App = () => {
       <Container maxWidth="lg">
         {ka ? (<TuluHeader />):(<Navbar />)}
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/auth" exact component={Auth} />
-          <Route path="/login" exact component={Login} />
+          {/* <Route path="/" exact component={Home} /> */}
+          {/* <Route path="/auth" exact component={Auth} /> */}
+          <Route path="/" exact component={Login} />
           <Route path="/home" exact component={Dashboard} />
           <Route path="/age" exact component={Age} />
           
