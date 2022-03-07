@@ -42,11 +42,12 @@ const SignUp = () => {
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
+    console.log(result)
 
     try {
       dispatch({ type: AUTH, data: { result, token } });
 
-      history.push('/');
+      history.push('/login');
     } catch (error) {
       console.log(error);
     }
@@ -59,11 +60,18 @@ const SignUp = () => {
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">{ isSignup ? 'Sign up' : 'Sign in' }</Typography>
-        <form className={classes.form} onSubmit={handleSubmit}>
+        <GoogleLogin
+            clientId='894452106348-cel1tv9iid6s6pdp8056oa44uu5oitld.apps.googleusercontent.com'
+            render={(renderProps) => (
+              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} varient="contained">
+                Continue with Google</Button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleSuccess}
+            cookiePolicy="single_host_origin"
+        />
+        <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
+        {/* <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             { isSignup && (
             <>
@@ -96,7 +104,7 @@ const SignUp = () => {
               </Button>
             </Grid>
           </Grid>
-        </form>
+        </form> */}
       </Paper>
     </Container>
   );

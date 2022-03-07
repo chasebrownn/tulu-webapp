@@ -9,6 +9,7 @@ import Login from './components/Logintulu/Login'
 import TuluHeader from './components/TuluHeader/Tulu'
 import Age from './components/Age/Age'
 import Dashboard from './components/Dashboardtulu/Dashboard'
+import Hometulu from './components/Hometulu/Home'
 
 const App = () => {
   const ka = true;
@@ -21,8 +22,9 @@ const App = () => {
           {/* <Route path="/" exact component={Home} /> */}
           {/* <Route path="/auth" exact component={Auth} /> */}
           <Route path="/" exact component={Login} />
-          <Route path="/home" exact component={Dashboard} />
+          <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/age" exact component={Age} />
+          <Route path="/home" exact component={Hometulu} />
           
         </Switch>
       </Container>

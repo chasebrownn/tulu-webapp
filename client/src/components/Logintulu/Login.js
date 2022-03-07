@@ -69,6 +69,7 @@ const SignUp = () => {
             </>
             )}
             <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
+            <Input name="age" label="Enter Age" handleChange={handleChange} type="age" />
             <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
             { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
           </Grid>
