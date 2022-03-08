@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/components/Dashboardtulu/Dashboard.js"],
   theme: {
     extend: {},
   },

@@ -8,7 +8,7 @@ import TuluHeader from './components/TuluHeader/Tulu'
 import Age from './components/Age/Age'
 import Dashboard from './components/Dashboardtulu/Dashboard'
 import Hometulu from './components/Hometulu/Home'
-
+import './index.css'
 const App = () => {
   const ka = true;
 
