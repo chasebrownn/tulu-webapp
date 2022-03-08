@@ -1,47 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import {Button, Paper, Grid, Typography, Container } from '@material-ui/core';
+import {Button, Paper, Container } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import {FacebookLogin} from 'react-facebook-login';
 
 import Icon from './icon';
-import { signin, signup, login } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
-import Input from './Input';
-
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const SignUp = () => {
-  const [form, setForm] = useState(initialState);
-  const [isSignup, setIsSignup] = useState(false);
+  // const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
+  const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
 
-  const [showPassword, setShowPassword] = useState(false);
-  const handleShowPassword = () => setShowPassword(!showPassword);
-
-  const switchMode = () => {
-    setForm(initialState);
-    setIsSignup((prevIsSignup) => !prevIsSignup);
-    setShowPassword(false);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (isSignup) {
-      dispatch(signup(form, history));
-    } else {
-      dispatch(signin(form, history));
-    }
-  };
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(form, history))
+    history.push('/login');
   };
+  const handleSignup = (e) => {
+    e.preventDefault();
+    history.push('/signup');
+  };
+  
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
@@ -56,9 +39,6 @@ const SignUp = () => {
     }
   };
 
-  const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   return (
     <Container component="main" maxWidth="xs">

@@ -4,7 +4,7 @@ import logo from '../../images/logo.png';
 const Tulu = () => {
   return (
     <div>
-      <img src={logo}></img>
+      <img src={logo} alt='Tulu Logo'></img>
         <p>Travel unlimited <br/>Live unlimited</p>
     </div>
   )

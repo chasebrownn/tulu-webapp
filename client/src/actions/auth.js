@@ -37,7 +37,7 @@ export const ageSelected = (formData, router) => async (dispatch) => {
   }
 };
 
-export const login = (formData, router) => async (dispatch) => {
+export const login = (router) => async (dispatch) => {
   try {
     // const { data } = await api.signUp(formData);
 
