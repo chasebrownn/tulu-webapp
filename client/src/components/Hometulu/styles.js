@@ -27,4 +27,11 @@ export default makeStyles((theme) => ({
   googleButton: {
     marginBottom: theme.spacing(2),
   },
+  flexboxContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  butt: {
+    display: 'inline-block',
+  }
 }));

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
+import {Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import {FacebookLogin} from 'react-facebook-login';
 
 import Icon from './icon';
-import { signin, signup } from '../../actions/auth';
+import { signin, signup, login } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
@@ -38,7 +38,10 @@ const SignUp = () => {
       dispatch(signin(form, history));
     }
   };
-
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(login(form, history))
+  };
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
@@ -59,53 +62,47 @@ const SignUp = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Paper className={classes.paper} elevation={3}>
-        <GoogleLogin
-            clientId='894452106348-cel1tv9iid6s6pdp8056oa44uu5oitld.apps.googleusercontent.com'
-            render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} varient="contained">
-                Continue with Google</Button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleSuccess}
-            cookiePolicy="single_host_origin"
-        />
-        <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
-        {/* <form className={classes.form} onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            { isSignup && (
-            <>
-              <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
-              <Input name="lastName" label="Last Name" handleChange={handleChange} half />
-            </>
-            )}
-            <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
-            <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
-            { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
-          </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-            { isSignup ? 'Sign Up' : 'Sign In' }
-          </Button>
-          <GoogleLogin
-            clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
-            render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                Google Sign In
-              </Button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleError}
-            cookiePolicy="single_host_origin"
-          />
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Button onClick={switchMode}>
-                { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
-              </Button>
-            </Grid>
-          </Grid>
-        </form> */}
-      </Paper>
+      <div class="flexboxContainer">
+        <div half>
+          <Paper className={classes.paper} elevation={3}>
+            <GoogleLogin
+                clientId='894452106348-cel1tv9iid6s6pdp8056oa44uu5oitld.apps.googleusercontent.com'
+                render={(renderProps) => (
+                  <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} varient="contained">
+                    Continue with Facebook</Button>
+                )}
+                onSuccess={googleSuccess}
+                onFailure={googleError}
+                cookiePolicy="single_host_origin"
+            />
+            <GoogleLogin
+                clientId='894452106348-cel1tv9iid6s6pdp8056oa44uu5oitld.apps.googleusercontent.com'
+                render={(renderProps) => (
+                  <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} varient="contained">
+                    Continue with Google</Button>
+                )}
+                onSuccess={googleSuccess}
+                onFailure={googleError}
+                cookiePolicy="single_host_origin"
+            />
+            <div>
+              <Button half onClick={handleLogin}>Login</Button>
+              <Button half onClick={handleLogin}>SignUp</Button>
+              
+            </div>
+          </Paper>
+        </div>
+        <div half>
+          <Paper className={classes.paper} elevation={2}>
+            <p>COPY COPY COPY</p>
+            <p>COPY COPY COPY</p>
+            <p>COPY COPY COPY</p>
+            <p>COPY COPY COPY</p>
+            <p>COPY COPY COPY</p>
+            <p>COPY COPY COPY</p>
+          </Paper>
+        </div>
+      </div>
     </Container>
   );
 };
