@@ -43,7 +43,7 @@ const Dashboard = () => {
                                     </a>
                                 </p> */}
                                 <a className="block mt-2">
-                                    <p className="text-center text-[48px] font-semibold text-gray-900">plan</p>
+                                    <p className="text-center text-[48px] font-semibold text-gray-900">plasn</p>
                                 </a>
                             </div>
 

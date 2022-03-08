@@ -13,6 +13,7 @@ const store = createStore(reducers, compose(applyMiddleware(thunk)));
 ReactDOM.render(
   <Provider store={store}>
     <App />
+    <h2 className="text-3xl tracking-tight font-extrabold text-wgit-900 md:text-4xl">tulu</h2>
   </Provider>,
   document.getElementById('root'),
 );
